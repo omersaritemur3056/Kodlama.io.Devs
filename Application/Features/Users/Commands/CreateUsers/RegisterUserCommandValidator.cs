@@ -12,7 +12,7 @@ namespace Application.Features.Users.Commands.CreateUsers
         public RegisterUserCommandValidator()
         {
             RuleFor(x => x.Email).NotEmpty();
-            RuleFor(x => x.Password).EmailAddress();
+            
             RuleFor(c => c.Password).NotEmpty();
             RuleFor(c => c.Password).MinimumLength(8);
             RuleFor(c => c.Password).Must(ContainLDS);
