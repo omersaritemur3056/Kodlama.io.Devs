@@ -1,4 +1,5 @@
 ﻿using Application.Services.Repositories;
+using Core.Security.JWT;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +22,16 @@ namespace Persistence
                 configuration.GetConnectionString("KodlamaIoDevsConnectionString")));
 
             services.AddScoped<IProgrammingLanguageRepository, ProgrammingLanguageRepository>();
+
+            services.AddScoped<IProgrammingTechnologyRepository, ProgrammingTechnologyRepository>();
+
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserOperationClaimRepository, UserOperationClaimRepository>();
+
+            services.AddScoped<ITokenHelper, JwtHelper>(); //bu olmazsa jwt tarafı hata verir!
+
+            services.AddScoped<ISocialMediaRepository, SocialMediaRepository>();
+
 
             return services;
         }
