@@ -12,8 +12,8 @@ using Persistence.Contexts;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(BaseDbContext))]
-    [Migration("20220912023935_Add-SocialMedia")]
-    partial class AddSocialMedia
+    [Migration("20220912042020_Add-Something")]
+    partial class AddSomething
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,18 +41,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("OperationClaims", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "SuperUser"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Admin"
-                        });
                 });
 
             modelBuilder.Entity("Core.Security.Entities.RefreshToken", b =>
@@ -154,19 +142,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AuthenticatorType = 0,
-                            Email = "omer@gmail.com",
-                            FirstName = "Ömer",
-                            LastName = "Sarıtemur",
-                            PasswordHash = new byte[] { 61, 214, 48, 244, 36, 80, 215, 65, 14, 63, 194, 44, 158, 206, 88, 206, 230, 25, 186, 186, 25, 111, 66, 3, 1, 45, 44, 234, 79, 105, 203, 211, 162, 253, 169, 203, 42, 90, 84, 122, 170, 143, 128, 206, 191, 76, 129, 3, 0, 105, 60, 99, 79, 48, 190, 239, 223, 22, 179, 221, 208, 139, 64, 163 },
-                            PasswordSalt = new byte[] { 168, 106, 132, 181, 64, 236, 105, 198, 147, 221, 6, 94, 118, 81, 95, 254, 6, 218, 128, 39, 212, 175, 67, 175, 44, 170, 96, 3, 211, 205, 197, 119, 170, 61, 5, 59, 111, 141, 35, 80, 147, 66, 73, 98, 39, 148, 240, 5, 113, 135, 111, 146, 34, 196, 103, 247, 135, 56, 76, 123, 128, 117, 106, 57, 230, 95, 252, 36, 182, 215, 97, 65, 152, 55, 206, 213, 40, 9, 204, 14, 140, 89, 157, 202, 252, 227, 215, 62, 68, 171, 212, 84, 145, 237, 37, 121, 148, 68, 109, 164, 188, 124, 0, 145, 234, 143, 172, 107, 100, 165, 95, 162, 78, 149, 239, 4, 217, 112, 138, 46, 103, 196, 214, 175, 163, 90, 241, 234 },
-                            Status = true
-                        });
                 });
 
             modelBuilder.Entity("Core.Security.Entities.UserOperationClaim", b =>
@@ -212,13 +187,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ProgrammingLanguages", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "C#"
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.ProgrammingTechnology", b =>
@@ -244,20 +212,6 @@ namespace Persistence.Migrations
                     b.HasIndex("ProgrammingLanguageId");
 
                     b.ToTable("ProgrammingTechnologies", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "ASP.NET",
-                            ProgrammingLanguageId = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Django",
-                            ProgrammingLanguageId = 1002
-                        });
                 });
 
             modelBuilder.Entity("Domain.Entities.SocialMedia", b =>
@@ -283,14 +237,6 @@ namespace Persistence.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("SocialMedias", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Url = "https://github.com/omersaritemur3056",
-                            UserId = 1
-                        });
                 });
 
             modelBuilder.Entity("Core.Security.Entities.RefreshToken", b =>

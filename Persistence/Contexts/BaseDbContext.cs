@@ -110,26 +110,25 @@ namespace Persistence.Contexts
 
 
 
-            ProgrammingLanguage[] programmingLanguageSeeds = { new(1, "C#") };
-            modelBuilder.Entity<ProgrammingLanguage>().HasData(programmingLanguageSeeds);
+            //ProgrammingLanguage[] programmingLanguageSeeds = { new(1, "C#") };
+            //modelBuilder.Entity<ProgrammingLanguage>().HasData(programmingLanguageSeeds);
 
-            ProgrammingTechnology[] programmingTechnologiesSeeds = { new(1, 1, "ASP.NET"),
-            new(2, 1002, "Django")};
-            modelBuilder.Entity<ProgrammingTechnology>().HasData(programmingTechnologiesSeeds);
+            //ProgrammingTechnology[] programmingTechnologiesSeeds = { new(1, 1, "ASP.NET")};
+            //modelBuilder.Entity<ProgrammingTechnology>().HasData(programmingTechnologiesSeeds);
 
-            HashingHelper.CreatePasswordHash("12345", out byte[] passwordHash, out byte[] passwordSalt);
+            //HashingHelper.CreatePasswordHash("12345", out byte[] passwordHash, out byte[] passwordSalt);
 
-            User[] userEntitySeeds =
-            {
-                new(1, "Ömer", "Sarıtemur", "omer@gmail.com", passwordSalt, passwordHash, true, AuthenticatorType.None),
-            };
-            modelBuilder.Entity<User>().HasData(userEntitySeeds);
+            //User[] userEntitySeeds =
+            //{
+            //    new(1, "Ömer", "Sarıtemur", "omer@gmail.com", passwordSalt, passwordHash, true, AuthenticatorType.None),
+            //};
+            //modelBuilder.Entity<User>().HasData(userEntitySeeds);
 
-            OperationClaim[] operationClaimsSeed = { new(1, "SuperUser"), new(2, "Admin") };
-            modelBuilder.Entity<OperationClaim>().HasData(operationClaimsSeed);
+            //OperationClaim[] operationClaimsSeed = { new(1, "SuperUser"), new(2, "Admin") };
+            //modelBuilder.Entity<OperationClaim>().HasData(operationClaimsSeed);
 
-            SocialMedia[] socialMediaEntitySeeds = { new(1, 1, "https://github.com/omersaritemur3056") };
-            modelBuilder.Entity<SocialMedia>().HasData(socialMediaEntitySeeds);
+            //SocialMedia[] socialMediaEntitySeeds = { new(1, 1, "https://github.com/omersaritemur3056") };
+            //modelBuilder.Entity<SocialMedia>().HasData(socialMediaEntitySeeds);
         }
     }
 }
