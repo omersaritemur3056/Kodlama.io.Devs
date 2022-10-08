@@ -1,20 +1,13 @@
-﻿using Application.Features.ProgrammingLanguages.Rules;
+﻿using Application.Features.Auths.Rules;
+using Application.Features.ProgrammingLanguages.Rules;
 using Application.Features.ProgrammingTechnologies.Rules;
 using Application.Features.SocialMedias.Rules;
-using Application.Features.Users.Rules;
-using Core.Application.Pipelines.Authorization;
-using Core.Application.Pipelines.Caching;
-using Core.Application.Pipelines.Logging;
+using Application.Services.AuthService;
 using Core.Application.Pipelines.Validation;
 using FluentValidation;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Application
 {
@@ -28,7 +21,7 @@ namespace Application
 
             services.AddScoped<ProgrammingLanguageBusinessRules>();
             services.AddScoped<ProgrammingTechnologyBusinessRules>();
-            services.AddScoped<UserBusinessRules>();
+            services.AddScoped<AuthBusinessRules>();
             services.AddScoped<SocialMediaBusinessRules>();
 
 
@@ -39,6 +32,8 @@ namespace Application
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CacheRemoveBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
+
+            services.AddScoped<IAuthService, AuthManager>();
 
             return services;
         }

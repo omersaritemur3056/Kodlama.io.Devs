@@ -1,5 +1,5 @@
-﻿using Application.Features.Users.DTOs;
-using Application.Features.Users.Rules;
+﻿using Application.Features.Auths.DTOs;
+using Application.Features.Auths.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
 using Core.CrossCuttingConcerns.Exceptions;
@@ -15,35 +15,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Users.Queries
+namespace Application.Features.Auths.Commands.CreateUsers
 {
-    public class UserLoginQuery : IRequest<AccessTokenDto>
+    public class UserLogin : IRequest<AccessTokenDto>
     {
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public class UserLoginQueryHandler : IRequestHandler<UserLoginQuery, AccessTokenDto>
+        public class UserLoginHandler : IRequestHandler<UserLogin, AccessTokenDto>
         {
             private readonly IMapper mapper;
             private readonly IUserRepository userRepository;
             private readonly ITokenHelper tokenHelper;
-            private readonly UserBusinessRules userBusinessRules;
+            private readonly AuthBusinessRules authBusinessRules;
 
-            public UserLoginQueryHandler(IMapper mapper, IUserRepository userRepository, ITokenHelper tokenHelper, UserBusinessRules userBusinessRules)
+            public UserLoginHandler(IMapper mapper, IUserRepository userRepository, ITokenHelper tokenHelper, AuthBusinessRules authBusinessRules)
             {
                 this.mapper = mapper;
                 this.userRepository = userRepository;
                 this.tokenHelper = tokenHelper;
-                this.userBusinessRules = userBusinessRules;
+                this.authBusinessRules = authBusinessRules;
             }
 
-            public async Task<AccessTokenDto> Handle(UserLoginQuery request, CancellationToken cancellationToken)
+            public async Task<AccessTokenDto> Handle(UserLogin request, CancellationToken cancellationToken)
             {
                 User? user = await userRepository.GetAsync(u => u.Email == request.Email,
                     include: u => u.Include(c => c.UserOperationClaims).ThenInclude(c => c.OperationClaim));
 
-                userBusinessRules.UserShouldExistWhenRequested(user);
-                userBusinessRules.UserPasswordShouldBeMatch(request.Password, user.PasswordHash, user.PasswordSalt);
+                authBusinessRules.UserShouldExistWhenRequested(user);
+                authBusinessRules.UserPasswordShouldBeMatch(request.Password, user.PasswordHash, user.PasswordSalt);
 
                 List<OperationClaim> operationClaims = new();
 

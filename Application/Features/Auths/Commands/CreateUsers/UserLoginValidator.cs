@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Users.Queries
+namespace Application.Features.Auths.Commands.CreateUsers
 {
-    public class UserLoginQueryValidator : AbstractValidator<UserLoginQuery>
+    public class UserLoginValidator : AbstractValidator<UserLogin>
     {
-        public UserLoginQueryValidator()
+        public UserLoginValidator()
         {
             RuleFor(c => c.Email).NotEmpty();
             RuleFor(c => c.Password).NotEmpty();

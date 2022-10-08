@@ -9,23 +9,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Features.Users.Rules
+namespace Application.Features.Auths.Rules
 {
-    public class UserBusinessRules
+    public class AuthBusinessRules
     {
         private readonly IUserRepository userRepository;
 
-        public UserBusinessRules(IUserRepository userRepository)
+        public AuthBusinessRules(IUserRepository userRepository)
         {
             this.userRepository = userRepository;
         }
 
-        public async Task UserEmailCannotBeDuplicated(string email)
-        {
-            IPaginate<User> result = await userRepository.GetListAsync(u => u.Email == email);
-            if (result.Items.Any())
-                throw new BusinessException("This email used for registiration.");
-        }
 
         public void UserPasswordShouldBeMatch(string password, byte[] passwordHash, byte[] passwordSalt)
         {
@@ -43,5 +37,16 @@ namespace Application.Features.Users.Rules
                 throw new BusinessException("User does not exist");
             }
         }
+
+        public async Task EmailCanNotBeDuplicatedWhenRegistered(string email)
+        {
+            User? user = await userRepository.GetAsync(u => u.Email == email);
+            if (user != null)
+            {
+                throw new BusinessException("Mail already exist");
+            }
+        }
+
+
     }
 }
