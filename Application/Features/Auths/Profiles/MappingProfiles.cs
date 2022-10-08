@@ -1,6 +1,8 @@
 ﻿using Application.Features.Auths.Commands.CreateUsers;
 using Application.Features.Auths.DTOs;
+using Application.Features.Auths.Models;
 using AutoMapper;
+using Core.Persistence.Paging;
 using Core.Security.Entities;
 using Core.Security.JWT;
 using System;
@@ -18,6 +20,9 @@ namespace Application.Features.Auths.Profiles
             CreateMap<User, RegisterUserCommand>().ReverseMap();
             CreateMap<AccessToken, AccessTokenDto>().ReverseMap();
             CreateMap<User, UserLogin>().ReverseMap();
+
+            CreateMap<User, GetListUserDto>().ReverseMap();
+            CreateMap<IPaginate<User>, GetListUserModel>().ReverseMap();
 
             CreateMap<ITokenHelper, JwtHelper>().ReverseMap();
         }

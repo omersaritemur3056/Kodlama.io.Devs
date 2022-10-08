@@ -1,5 +1,8 @@
 ﻿using Application.Features.Auths.Commands.CreateUsers;
 using Application.Features.Auths.DTOs;
+using Application.Features.Auths.Models;
+using Application.Features.Auths.Queries;
+using Core.Application.Requests;
 using Core.Security.Dtos;
 using Core.Security.Entities;
 using Microsoft.AspNetCore.Http;
@@ -33,6 +36,14 @@ namespace WebAPI.Controllers
         {
             AccessTokenDto result = await Mediator.Send(userLogin);
             return Created("", result);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetList([FromQuery] PageRequest pageRequest)
+        {
+            GetListUserQuery getListUserQuery = new() { PageRequest = pageRequest };
+            GetListUserModel getListUserModel = await Mediator.Send(getListUserQuery);
+            return Ok(getListUserModel);
         }
 
 
