@@ -1,4 +1,5 @@
 ﻿using Application.Features.Auths.Rules;
+using Application.Features.OperationClaims.Rules;
 using Application.Features.ProgrammingLanguages.Rules;
 using Application.Features.ProgrammingTechnologies.Rules;
 using Application.Features.SocialMedias.Rules;
@@ -23,6 +24,7 @@ namespace Application
             services.AddScoped<ProgrammingTechnologyBusinessRules>();
             services.AddScoped<AuthBusinessRules>();
             services.AddScoped<SocialMediaBusinessRules>();
+            services.AddScoped<OperationClaimBusinessRules>();
 
 
 
