@@ -1,6 +1,7 @@
 ﻿using Application.Features.SocialMedias.Models;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Domain.Entities;
@@ -14,9 +15,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.SocialMedias.Queries.GetListSocialMedia
 {
-    public class GetListSocialMediaQuery : IRequest<GetListSocialMediaModel>
+    public class GetListSocialMediaQuery : IRequest<GetListSocialMediaModel>, ISecuredRequest
     {
         public PageRequest PageRequest { get; set; }
+        public string[] Roles { get; } = new string[] { "superuser", "admin" };
 
         public class GetListSocialMediaQueryHandler : IRequestHandler<GetListSocialMediaQuery, GetListSocialMediaModel>
         {

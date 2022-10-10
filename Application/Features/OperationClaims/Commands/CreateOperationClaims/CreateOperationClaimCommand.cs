@@ -1,6 +1,7 @@
 ﻿using Application.Features.OperationClaims.DTOs;
 using Application.Features.OperationClaims.Rules;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Security.Entities;
 using MediatR;
 using Persistence.Repositories;
@@ -12,9 +13,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.OperationClaims.Commands.CreateOperationClaims
 {
-    public class CreateOperationClaimCommand : IRequest<CreatedOperationClaimDto>
+    public class CreateOperationClaimCommand : IRequest<CreatedOperationClaimDto>, ISecuredRequest
     {
         public string Name { get; set; }
+        public string[] Roles { get; } = new string[] { "superuser" };
 
         public class CreateOperationClaimCommandHandler : IRequestHandler<CreateOperationClaimCommand, CreatedOperationClaimDto>
         {

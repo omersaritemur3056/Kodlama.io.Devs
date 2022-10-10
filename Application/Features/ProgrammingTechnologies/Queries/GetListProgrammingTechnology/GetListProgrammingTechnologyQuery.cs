@@ -2,6 +2,7 @@
 using Application.Features.ProgrammingTechnologies.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Requests;
 using Core.Persistence.Paging;
 using Domain.Entities;
@@ -15,9 +16,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.ProgrammingTechnologies.Queries.GetListProgrammingTechnology
 {
-    public class GetListProgrammingTechnologyQuery : IRequest<ProgrammingTechnologyListModel>
+    public class GetListProgrammingTechnologyQuery : IRequest<ProgrammingTechnologyListModel>, ISecuredRequest
     {
         public PageRequest PageRequest { get; set; }
+        public string[] Roles { get; } = new string[] { "superuser" };
 
         public class GetListProgrammingTechnologyQueryHnadler : IRequestHandler<GetListProgrammingTechnologyQuery, ProgrammingTechnologyListModel>
         {

@@ -2,6 +2,7 @@
 using Application.Features.SocialMedias.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -12,9 +13,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.SocialMedias.Commands.DeleteSocialMedias
 {
-    public class DeleteSocialMediaCommand : IRequest<DeletedSocialMediaDto>
+    public class DeleteSocialMediaCommand : IRequest<DeletedSocialMediaDto>, ISecuredRequest
     {
         public int Id { get; set; }
+        public string[] Roles { get; } = new string[] { "superuser" };
 
         public class DeleteSocialMediaCommandHandler : IRequestHandler<DeleteSocialMediaCommand, DeletedSocialMediaDto>
         {

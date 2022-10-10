@@ -2,6 +2,7 @@
 using Application.Features.ProgrammingTechnologies.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Core.Application.Requests;
 using Core.Persistence.Dynamic;
 using Core.Persistence.Paging;
@@ -16,10 +17,11 @@ using System.Threading.Tasks;
 
 namespace Application.Features.ProgrammingTechnologies.Queries.GetListByDynamicProgrammingTechnology
 {
-    public class GetListByDynamicProgrammingTechnologyQuery : IRequest<ProgrammingTechnologyListModel>
+    public class GetListByDynamicProgrammingTechnologyQuery : IRequest<ProgrammingTechnologyListModel>, ISecuredRequest
     {
         public Dynamic Dynamic { get; set; }
         public PageRequest PageRequest { get; set; }
+        public string[] Roles { get; } = new string[] { "superuser", "admin" };
 
         public class GetListByDynamicProgrammingTechnologyQueryHandler : IRequestHandler<GetListByDynamicProgrammingTechnologyQuery, ProgrammingTechnologyListModel>
         {

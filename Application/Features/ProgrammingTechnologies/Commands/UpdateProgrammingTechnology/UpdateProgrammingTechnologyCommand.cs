@@ -2,6 +2,7 @@
 using Application.Features.ProgrammingTechnologies.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -12,10 +13,11 @@ using System.Threading.Tasks;
 
 namespace Application.Features.ProgrammingTechnologies.Commands.UpdateProgrammingTechnology
 {
-    public class UpdateProgrammingTechnologyCommand : IRequest<UpdatedProgrammingTechnologyDto>
+    public class UpdateProgrammingTechnologyCommand : IRequest<UpdatedProgrammingTechnologyDto>, ISecuredRequest
     {
         public string Name { get; set; }
         public int ProgrammingLanguageId { get; set; }
+        public string[] Roles { get; } = new string[] { "superuser" };
 
         public class UpdateProgrammingTechnologyCommandHandler : IRequestHandler<UpdateProgrammingTechnologyCommand, UpdatedProgrammingTechnologyDto>
         {

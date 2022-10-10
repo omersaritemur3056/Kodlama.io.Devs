@@ -2,6 +2,7 @@
 using Application.Features.ProgrammingTechnologies.Rules;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -12,9 +13,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.ProgrammingTechnologies.Queries.GetByIdProgrammingTechnology
 {
-    public class GetByIdProgrammingTechnologyQuery : IRequest<ProgrammingTechnologyGetByIdDto>
+    public class GetByIdProgrammingTechnologyQuery : IRequest<ProgrammingTechnologyGetByIdDto>, ISecuredRequest
     {
         public int Id { get; set; }
+        public string[] Roles { get; } = new string[] { "superuser", "admin" };
 
         public class GetByIdProgrammingTechnologyQueryHandler : IRequestHandler<GetByIdProgrammingTechnologyQuery, ProgrammingTechnologyGetByIdDto>
         {

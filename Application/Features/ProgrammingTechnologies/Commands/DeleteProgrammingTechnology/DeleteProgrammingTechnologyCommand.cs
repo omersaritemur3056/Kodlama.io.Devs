@@ -1,6 +1,7 @@
 ﻿using Application.Features.ProgrammingTechnologies.DTOs;
 using Application.Services.Repositories;
 using AutoMapper;
+using Core.Application.Pipelines.Authorization;
 using Domain.Entities;
 using MediatR;
 using System;
@@ -11,9 +12,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.ProgrammingTechnologies.Commands.DeleteProgrammingTechnology
 {
-    public class DeleteProgrammingTechnologyCommand : IRequest<DeletedProgrammingTechnologyByIdDto>
+    public class DeleteProgrammingTechnologyCommand : IRequest<DeletedProgrammingTechnologyByIdDto>, ISecuredRequest
     {
         public int Id { get; set; }
+        public string[] Roles { get; } = new string[] { "superuser" };
 
         public class DeleteProgrammingTechnologyCommandHandler : IRequestHandler<DeleteProgrammingTechnologyCommand, DeletedProgrammingTechnologyByIdDto>
         {

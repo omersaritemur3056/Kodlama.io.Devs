@@ -28,7 +28,7 @@ namespace WebAPI.Controllers
             return Ok(deletedUserOperationClaimDto);
         }
 
-        [HttpPut] //burayı düzeltip refactor et
+        [HttpPut] 
         public async Task<IActionResult> Update([FromBody] UpdateUserOperationClaimCommand updateUserOperationClaimCommand)
         {
             UpdatedUserOperationClaimDto updatedUserOperationClaimDto = await Mediator.Send(updateUserOperationClaimCommand);
