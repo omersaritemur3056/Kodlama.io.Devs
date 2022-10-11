@@ -14,10 +14,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.OperationClaims.Queries
 {
-    public class GetListOperationClaimQuery : IRequest<GetListOperationClaimModel>, ISecuredRequest
+    public class GetListOperationClaimQuery : IRequest<GetListOperationClaimModel>
     {
         public PageRequest PageRequest { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser", "admin" };
+        //public string[] Roles { get; } = new string[] { "superuser", "admin" };
 
         public class GetListOperationClaimQueryHandler : IRequestHandler<GetListOperationClaimQuery, GetListOperationClaimModel>
         {

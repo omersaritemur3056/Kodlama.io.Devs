@@ -19,7 +19,7 @@ namespace Application.Features.ProgrammingTechnologies.Queries.GetListProgrammin
     public class GetListProgrammingTechnologyQuery : IRequest<ProgrammingTechnologyListModel>, ISecuredRequest
     {
         public PageRequest PageRequest { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser" };
+        public string[] Roles { get; } = new string[] { "Admin" };
 
         public class GetListProgrammingTechnologyQueryHnadler : IRequestHandler<GetListProgrammingTechnologyQuery, ProgrammingTechnologyListModel>
         {

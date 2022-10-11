@@ -16,7 +16,7 @@ namespace Application.Features.ProgrammingLanguages.Commands.CreateProgrammingLa
     public class CreateProgrammingLanguageCommand : IRequest<CreatedProgrammingLanguageDto>, ISecuredRequest
     {
         public string Name { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser" };
+        public string[] Roles { get; } = new string[] { "Admin" };
 
         public class CreateProgrammingLanguageCommandHandler : IRequestHandler<CreateProgrammingLanguageCommand,CreatedProgrammingLanguageDto>
         {

@@ -13,10 +13,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.OperationClaims.Commands.CreateOperationClaims
 {
-    public class CreateOperationClaimCommand : IRequest<CreatedOperationClaimDto>, ISecuredRequest
+    public class CreateOperationClaimCommand : IRequest<CreatedOperationClaimDto>
     {
         public string Name { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser" };
+        //public string[] Roles { get; } = new string[] { "superuser" };
 
         public class CreateOperationClaimCommandHandler : IRequestHandler<CreateOperationClaimCommand, CreatedOperationClaimDto>
         {

@@ -16,7 +16,7 @@ namespace Application.Features.ProgrammingTechnologies.Queries.GetByIdProgrammin
     public class GetByIdProgrammingTechnologyQuery : IRequest<ProgrammingTechnologyGetByIdDto>, ISecuredRequest
     {
         public int Id { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser", "admin" };
+        public string[] Roles { get; } = new string[] {"Admin" };
 
         public class GetByIdProgrammingTechnologyQueryHandler : IRequestHandler<GetByIdProgrammingTechnologyQuery, ProgrammingTechnologyGetByIdDto>
         {

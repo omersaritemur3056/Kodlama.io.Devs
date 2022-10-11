@@ -1,4 +1,5 @@
 ﻿using Application.Features.Auths.Commands.CreateUsers;
+using Application.Features.Auths.Commands.LoginUsers;
 using Application.Features.Auths.DTOs;
 using Application.Features.Auths.Models;
 using Application.Features.Auths.Queries;
@@ -32,10 +33,16 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] UserLogin userLogin)
+        public async Task<IActionResult> Login([FromBody] UserForLoginDto userForLoginDto)
         {
-            AccessTokenDto result = await Mediator.Send(userLogin);
-            return Created("", result);
+            var loginUser = new UserLogin
+            {
+                UserForLoginDto = userForLoginDto,
+                IpAddress = GetIpAddress()
+            };
+
+            var result = await Mediator.Send(loginUser);
+            return Ok(result);
         }
 
         [HttpGet]

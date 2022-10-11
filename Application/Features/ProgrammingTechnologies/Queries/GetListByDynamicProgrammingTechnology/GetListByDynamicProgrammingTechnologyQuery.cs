@@ -21,7 +21,7 @@ namespace Application.Features.ProgrammingTechnologies.Queries.GetListByDynamicP
     {
         public Dynamic Dynamic { get; set; }
         public PageRequest PageRequest { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser", "admin" };
+        public string[] Roles { get; } = new string[] {"Admin" };
 
         public class GetListByDynamicProgrammingTechnologyQueryHandler : IRequestHandler<GetListByDynamicProgrammingTechnologyQuery, ProgrammingTechnologyListModel>
         {

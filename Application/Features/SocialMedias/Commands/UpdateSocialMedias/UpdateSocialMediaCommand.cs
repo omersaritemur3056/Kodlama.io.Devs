@@ -18,7 +18,7 @@ namespace Application.Features.SocialMedias.Commands.UpdateSocialMedias
         public int Id { get; set; }
         public string Url { get; set; }
         public int UserId { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser" };
+        public string[] Roles { get; } = new string[1] { "Admin" };
 
         public class UpdateSocialMediaCommandHandler : IRequestHandler<UpdateSocialMediaCommand, UpdatedSocialMediaDto>
         {

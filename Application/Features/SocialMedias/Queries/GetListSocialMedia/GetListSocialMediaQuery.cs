@@ -18,7 +18,7 @@ namespace Application.Features.SocialMedias.Queries.GetListSocialMedia
     public class GetListSocialMediaQuery : IRequest<GetListSocialMediaModel>, ISecuredRequest
     {
         public PageRequest PageRequest { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser", "admin" };
+        public string[] Roles { get; } = new string[1] { "Admin" };
 
         public class GetListSocialMediaQueryHandler : IRequestHandler<GetListSocialMediaQuery, GetListSocialMediaModel>
         {

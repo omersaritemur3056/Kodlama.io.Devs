@@ -26,10 +26,13 @@ namespace Core.Application.Pipelines.Authorization
         {
             List<string>? roleClaims = _httpContextAccessor.HttpContext.User.ClaimRoles();
 
+            //authorization hatasını çözen değişken
+            var c = _httpContextAccessor.HttpContext.User;
+
             if (roleClaims == null) throw new AuthorizationException("Claims not found.");
 
             bool isNotMatchedARoleClaimWithRequestRoles =
-                roleClaims.FirstOrDefault(roleClaim => request.Roles.Any(role => role.ToLower() == roleClaim.ToLower())).IsNullOrEmpty();
+                roleClaims.FirstOrDefault(roleClaim => request.Roles.Any(role => role == roleClaim)).IsNullOrEmpty();
             if (isNotMatchedARoleClaimWithRequestRoles) throw new AuthorizationException("You are not authorized.");
 
             TResponse response = await next();

@@ -16,7 +16,7 @@ namespace Application.Features.ProgrammingLanguages.Commands.DeleteProgrammingLa
     public class DeleteProgrammingLanguageCommand : IRequest<DeletedProgrammingLanguageDto>, ISecuredRequest
     {
         public string Name { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser" };
+        public string[] Roles { get; } = new string[] { "Admin" };
 
         public class DeleteProgrammingLanguageCommandHandler : IRequestHandler<
             DeleteProgrammingLanguageCommand, DeletedProgrammingLanguageDto>

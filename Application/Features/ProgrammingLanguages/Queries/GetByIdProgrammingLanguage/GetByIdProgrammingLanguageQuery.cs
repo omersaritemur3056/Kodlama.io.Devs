@@ -16,7 +16,7 @@ namespace Application.Features.ProgrammingLanguages.Queries.GetByIdProgrammingLa
     public class GetByIdProgrammingLanguageQuery : IRequest<ProgrammingLanguageGetByIdDto>, ISecuredRequest
     {
         public int Id { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser", "admin" };
+        public string[] Roles { get; } = new string[] { "Admin" };
 
         public class GetByIdProgrammingLanguageQueryHandler : IRequestHandler<GetByIdProgrammingLanguageQuery,
             ProgrammingLanguageGetByIdDto>

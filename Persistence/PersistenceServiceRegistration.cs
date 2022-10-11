@@ -30,7 +30,7 @@ namespace Persistence
             services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
             services.AddScoped<IOperationClaimRepository, OperationClaimRepository>();
 
-            //services.AddScoped<ITokenHelper, JwtHelper>(); //bu olmazsa jwt tarafı hata verir!
+            services.AddScoped<ITokenHelper, JwtHelper>(); 
 
             services.AddScoped<ISocialMediaRepository, SocialMediaRepository>();
 

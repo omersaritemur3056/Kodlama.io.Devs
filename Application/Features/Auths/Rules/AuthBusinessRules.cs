@@ -47,6 +47,13 @@ namespace Application.Features.Auths.Rules
             }
         }
 
-
+        public async Task UserShouldBeExistWhenLogin(string email)
+        {
+            var result = await userRepository.GetAsync(u => u.Email == email);
+            if (result is null)
+            {
+                throw new BusinessException("User not found");
+            }
+        }
     }
 }

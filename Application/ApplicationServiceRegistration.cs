@@ -29,17 +29,16 @@ namespace Application
             services.AddScoped<SocialMediaBusinessRules>();
             services.AddScoped<OperationClaimBusinessRules>();
             services.AddScoped<UserOperationClaimBusinessRules>();
-
+            services.AddScoped<IAuthService, AuthManager>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(AuthorizationBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CacheRemoveBehavior<,>));
             //services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
-            services.AddScoped<IAuthService, AuthManager>();
 
             return services;
         }

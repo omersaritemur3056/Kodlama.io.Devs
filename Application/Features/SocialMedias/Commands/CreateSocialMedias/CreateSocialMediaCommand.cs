@@ -17,7 +17,7 @@ namespace Application.Features.SocialMedias.Commands.CreateSocialMedias
     {
         public string Url { get; set; }
         public int UserId { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser" };
+        public string[] Roles { get; } = new string[1] { "Admin" };
 
         public class CreateSocialMediaCommandHandler : IRequestHandler<CreateSocialMediaCommand, CreatedSocialMediaDto>
         {

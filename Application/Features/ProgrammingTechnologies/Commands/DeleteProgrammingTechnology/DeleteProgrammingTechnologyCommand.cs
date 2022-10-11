@@ -15,7 +15,7 @@ namespace Application.Features.ProgrammingTechnologies.Commands.DeleteProgrammin
     public class DeleteProgrammingTechnologyCommand : IRequest<DeletedProgrammingTechnologyByIdDto>, ISecuredRequest
     {
         public int Id { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser" };
+        public string[] Roles { get; } = new string[] { "Admin" };
 
         public class DeleteProgrammingTechnologyCommandHandler : IRequestHandler<DeleteProgrammingTechnologyCommand, DeletedProgrammingTechnologyByIdDto>
         {

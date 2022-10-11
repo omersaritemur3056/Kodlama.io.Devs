@@ -1,4 +1,5 @@
 ﻿using Application.Features.Auths.Commands.CreateUsers;
+using Application.Features.Auths.Commands.LoginUsers;
 using Application.Features.Auths.DTOs;
 using Application.Features.Auths.Models;
 using AutoMapper;
@@ -18,13 +19,13 @@ namespace Application.Features.Auths.Profiles
         public MappingProfiles()
         {
             CreateMap<User, RegisterUserCommand>().ReverseMap();
-            CreateMap<AccessToken, AccessTokenDto>().ReverseMap();
             CreateMap<User, UserLogin>().ReverseMap();
 
             CreateMap<User, GetListUserDto>().ReverseMap();
             CreateMap<IPaginate<User>, GetListUserModel>().ReverseMap();
 
             CreateMap<ITokenHelper, JwtHelper>().ReverseMap();
+
         }
     }
 }

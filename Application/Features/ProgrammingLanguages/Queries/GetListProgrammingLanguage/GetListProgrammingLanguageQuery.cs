@@ -17,7 +17,7 @@ namespace Application.Features.ProgrammingLanguages.Queries.GetListProgrammingLa
     public class GetListProgrammingLanguageQuery : IRequest<ProgrammingLanguageListModel>, ISecuredRequest
     {
         public PageRequest PageRequest { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser", "admin" };
+        public string[] Roles { get; } = new string[] { "Admin" };
 
         public class GetListProgrammingLanguageQueryHandler : IRequestHandler<GetListProgrammingLanguageQuery,
             ProgrammingLanguageListModel>

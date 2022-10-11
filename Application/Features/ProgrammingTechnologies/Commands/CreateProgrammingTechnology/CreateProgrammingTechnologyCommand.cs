@@ -17,7 +17,7 @@ namespace Application.Features.ProgrammingTechnologies.Commands.CreateProgrammin
     {
         public string Name { get; set; }
         public int ProgrammingLanguageId { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser" };
+        public string[] Roles { get; } = new string[] { "Admin" };
 
         public class CreateProgrammingTechnologyCommandHandler : IRequestHandler<CreateProgrammingTechnologyCommand, CreatedProgrammingTechnologyDto>
         {

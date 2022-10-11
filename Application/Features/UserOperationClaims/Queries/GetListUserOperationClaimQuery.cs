@@ -17,7 +17,7 @@ namespace Application.Features.UserOperationClaims.Queries
     public class GetListUserOperationClaimQuery : IRequest<GetListUserOperationClaimModel>
     {
         public PageRequest PageRequest { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser", "admin" };
+        //public string[] Roles { get; } = new string[] { "superuser", "admin" };
 
         public class GetListUserOperationClaimQueryHandler : IRequestHandler<GetListUserOperationClaimQuery, GetListUserOperationClaimModel>
         {

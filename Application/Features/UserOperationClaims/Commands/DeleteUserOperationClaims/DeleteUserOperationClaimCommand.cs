@@ -13,10 +13,10 @@ using System.Threading.Tasks;
 
 namespace Application.Features.UserOperationClaims.Commands.DeleteUserOperationClaims
 {
-    public class DeleteUserOperationClaimCommand : IRequest<DeletedUserOperationClaimDto>, ISecuredRequest
+    public class DeleteUserOperationClaimCommand : IRequest<DeletedUserOperationClaimDto>
     {
         public int Id { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser" };
+        //public string[] Roles { get; } = new string[] { "superuser" };
 
         public class DeleteUserOperationClaimCommandHandler : IRequestHandler<DeleteUserOperationClaimCommand, DeletedUserOperationClaimDto>
         {

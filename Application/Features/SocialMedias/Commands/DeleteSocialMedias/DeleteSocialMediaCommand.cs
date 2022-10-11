@@ -16,7 +16,7 @@ namespace Application.Features.SocialMedias.Commands.DeleteSocialMedias
     public class DeleteSocialMediaCommand : IRequest<DeletedSocialMediaDto>, ISecuredRequest
     {
         public int Id { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser" };
+        public string[] Roles { get; } = new string[1] { "Admin" };
 
         public class DeleteSocialMediaCommandHandler : IRequestHandler<DeleteSocialMediaCommand, DeletedSocialMediaDto>
         {

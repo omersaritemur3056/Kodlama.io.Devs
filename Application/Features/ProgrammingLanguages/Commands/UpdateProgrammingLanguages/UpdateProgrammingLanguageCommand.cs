@@ -17,7 +17,7 @@ namespace Application.Features.ProgrammingLanguages.Commands.UpdateProgrammingLa
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string[] Roles { get; } = new string[] { "superuser" };
+        public string[] Roles { get; } = new string[] { "Admin" };
 
         public class UpdateProgrammingLanguageCommandHandler : IRequestHandler<
             UpdateProgrammingLanguageCommand, UpdatedProgrammingLanguageDto>
